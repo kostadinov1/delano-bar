@@ -14,6 +14,8 @@ class Event(models.Model):
     date = models.DateField(null=False, blank=False)
     time = models.TimeField(null=False, blank=False)
     image_url = models.URLField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
 
 
 class PromoEvent(models.Model):
@@ -28,6 +30,8 @@ class PromoEvent(models.Model):
     end_date = models.DateField(null=False, blank=False)
     end_time = models.TimeField(null=False, blank=False)
     image_url = models.URLField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
 
 
 class ProductCategory(models.Model):
@@ -35,8 +39,10 @@ class ProductCategory(models.Model):
 
     name = models.CharField(max_length=NAME_MAX_LEN, null=False, blank=False,
                             validators=(MinLengthValidator,))
-    description = models.TextField(null=False, blank=False,
+    description = models.TextField(null=True, blank=True,
                                    validators=(MinLengthValidator,))
+    created_on = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return f'{self.name}'
@@ -52,6 +58,7 @@ class Product(models.Model):
                                    validators=(MinLengthValidator,))
     image_url = models.URLField()
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=False, blank=False)
+    created_on = models.DateTimeField(auto_now_add=True)
 
 
 class PhotoGallery(models.Model):
@@ -61,6 +68,7 @@ class PhotoGallery(models.Model):
                              validators=(MinLengthValidator,))
     image_local = models.ImageField(null=True, blank=True, upload_to='photo_images_gallery')
     image_url = models.URLField(null=True, blank=True,)
+    created_on = models.DateTimeField(auto_now_add=True)
 
 
 

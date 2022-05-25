@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block main-content %}
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+                    <!-- Events Large -->
+                        <article id="main" class="container special">
+                            <header>
+                                <h2><a href="#">Latest Upcoming Event</a></h2>
+                            </header>
+                            <a href="#" class="image featured"><img src="{{ latest_event.image_url }}" alt="" /></a>
+
+                            <h2>{{ latest_event.title }}</h2>
+                            <br>
+                            <h3>Guest: {{ latest_event.guest }}</h3>
+                            <h3>The Party <b>STARTS</b> on {{ latest_event.date }} at {{ latest_event.time }}</h3>
+                            <br>
+                            <p>{{ latest_event.description }}</p>
+                        </article>
+
+						<hr />
+						<div class="row">
+                            {% for event in events %}
+							<article class="col-4 col-12-mobile special">
+								<a href="#" class="image featured"><img src="{{ event.image_url }}" alt="" height="300" /></a>
+								<header>
+									<h3><a href="#">Gravida aliquam penatibus</a></h3>
+								</header>
+                            <h2>{{ event.title }}</h2>
+                            <br>
+                            <h3>Guest: {{ event.guest }}</h3>
+                            <h3>The Party <b>STARTS</b> on {{ event.date }} at {{ event.time }}</h3>
+                            <br>
+                            <p class="event-description">{{ event.description }}</p>
+                            <footer>
+                                <a href="{% url 'events' %}" class="button">Details</a>
+                            </footer>
+							</article>
+                            {% endfor %}
+						</div>
+					</div>
+
+				</div>
+{% endblock %}

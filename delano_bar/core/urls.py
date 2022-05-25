@@ -1,6 +1,6 @@
 from django.urls import path
 
-from delano_bar.core.views import HomeView, EventsView, MenuView, PromoEventsView, CocktailMenuView, BeerMenuView, \
+from delano_bar.core.views import HomeView, EventsView, MenuView, PhotoGalleryView, CocktailMenuView, BeerMenuView, \
     SoftDrinksMenuView, AlcoholMenuView, ContactsView
 
 urlpatterns = [
@@ -11,6 +11,6 @@ urlpatterns = [
     path('beer-menu', BeerMenuView.as_view(), name='beer menu'),
     path('softdrinks-menu', SoftDrinksMenuView.as_view(), name='soft drinks menu'),
     path('alcohol-menu', AlcoholMenuView.as_view(), name='alcohol menu'),
-    path('promo-events', PromoEventsView.as_view(), name='promo events'),
+    path('promo-events', PhotoGalleryView.as_view(), name='promo events'),
     path('contact', ContactsView.as_view(), name='contacts')
 ]

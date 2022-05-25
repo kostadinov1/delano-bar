@@ -1,4 +1,93 @@
 {% extends 'base/base.html' %}
 {% block main-content %}
+<!-- Main Menu -->
+    <!-- Main Menu -->
 
+<section class="carousel">
+	<div class="reel">
+                {% for cocktail in cocktails %}
+		<article>
+			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<header>
+				<h3><a href="#">{{ cocktail.name }}</a></h3>
+                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+			</header>
+			<p>{{ cocktail.description }}</p>
+		</article>
+                {% endfor %}
+	</div>
+<!-- Main Menu -->
+
+</section>
+    <section class="carousel">
+	<div class="reel">
+                {% for cocktail in cocktails %}
+		<article>
+			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<header>
+				<h3><a href="#">{{ cocktail.name }}</a></h3>
+                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+			</header>
+			<p>{{ cocktail.description }}</p>
+		</article>
+                {% endfor %}
+	</div>
+
+</section>
+    <!-- Main Menu -->
+
+
+    <section class="carousel">
+	<div class="reel">
+                {% for cocktail in cocktails %}
+		<article>
+			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<header>
+				<h3><a href="#">{{ cocktail.name }}</a></h3>
+                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+			</header>
+			<p>{{ cocktail.description }}</p>
+		</article>
+                {% endfor %}
+	</div>
+</section>
+    <!-- Main Menu -->
+
+<section class="carousel">
+	<div class="reel">
+                {% for cocktail in cocktails %}
+		<article>
+			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<header>
+				<h3><a href="#">{{ cocktail.name }}</a></h3>
+                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+			</header>
+			<p>{{ cocktail.description }}</p>
+		</article>
+                {% endfor %}
+	</div>
+</section>
+
+<!-- Main Menu -->
+
+<div class="wrapper style1">
+    <section id="features" class="container special">
+        <header>
+            <h2>Morbi ullamcorper et varius leo lacus</h2>
+            <p>Ipsum volutpat consectetur orci metus consequat imperdiet duis integer semper magna.</p>
+        </header>
+        <div class="row">
+            {% for cocktail in cocktails %}
+            <article class="col-4 col-12-mobile special">
+                <a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="No Image" height="400" width="300"/></a>
+                <header>
+                    <h3><a href="#">{{ cocktail.name }}</a></h3>
+                    <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+                </header>
+                <p>{{ cocktail.description }}</p>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+</div>
 {% endblock %}

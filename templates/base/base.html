@@ -7,7 +7,7 @@
 -->
 <html lang="en">
 	<head>
-		<title>Helios by HTML5 UP</title>
+		<title id="title1">Delano</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static "assets/css/main1.css" %}" />
@@ -22,12 +22,12 @@
 					<!-- Inner -->
 						<div class="inner">
 							<header>
-								<h1><a href="{% url 'home' %}" id="logo">Delano</a></h1>
+								<h1><a href="{% url 'home' %}" id="logo">Delano Beach Bar</a></h1>
 								<hr />
 								<p>Come and Join The FUN!</p>
 							</header>
 							<footer>
-								<a href="#banner" class="button circled scrolly">Book Now</a>
+								<a href="#banner" class="button circled scrolly" id="bookBtn">Book Now</a>
 							</footer>
 						</div>
 
@@ -55,7 +55,7 @@
 									</ul>
 								</li>
 								<li><a href="{% url 'events' %}">Events</a></li>
-								<li><a href="{% url 'promo events' %}">Happy Hour</a></li>
+								<li><a href="{% url 'promo events' %}">Photo Gallery</a></li>
 								<li><a href="#">Contacts</a></li>
 							</ul>
 						</nav>

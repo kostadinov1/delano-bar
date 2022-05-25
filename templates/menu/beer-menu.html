@@ -1,4 +1,17 @@
 {% extends 'base/base.html' %}
 {% block main-content %}
-
+				<section class="carousel">
+					<div class="reel">
+                    {% for beer in beers %}
+						<article>
+							<a href="#" class="image featured"><img src="{{ beer.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+							<header>
+								<h3><a href="#">{{ beer.name }}</a></h3>
+                                <h4>Price: {{ beer.price| floatformat:2 }}lv.</h4>
+							</header>
+							<p>{{ beer.description }}</p>
+						</article>
+                    {% endfor %}
+					</div>
+				</section>
 {% endblock %}

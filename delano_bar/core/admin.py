@@ -6,12 +6,14 @@ from delano_bar.core.models import Product, ProductCategory, Event, PromoEvent, 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'price', 'category')
+    list_filter = ('category',)
+
 
 
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'id', 'description')
 
 
 @admin.register(Event)
