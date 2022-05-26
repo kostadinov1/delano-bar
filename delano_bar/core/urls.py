@@ -1,7 +1,7 @@
 from django.urls import path
 
 from delano_bar.core.views import HomeView, EventsView, MenuView, PhotoGalleryView, CocktailMenuView, BeerMenuView, \
-    SoftDrinksMenuView, AlcoholMenuView, ContactsView
+    SoftDrinksMenuView, AlcoholMenuView, contacts_view
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -12,5 +12,5 @@ urlpatterns = [
     path('softdrinks-menu', SoftDrinksMenuView.as_view(), name='soft drinks menu'),
     path('alcohol-menu', AlcoholMenuView.as_view(), name='alcohol menu'),
     path('photo-gallery', PhotoGalleryView.as_view(), name='photo gallery'),
-    path('contact', ContactsView.as_view(), name='contacts')
+    path('contact', contacts_view, name='contacts')
 ]

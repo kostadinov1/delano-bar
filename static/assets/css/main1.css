@@ -3,8 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+/*--------------------------------------------------------------------------*/
+/*      MY IMPROVISED CSS*/
+/*--------------------------------------------------------------------------*/
+
+
 #logo {
 	font-family: 'Lobster', cursive;
+}
+#contact-message {
+	color: #ffffff;
+}
+
+.contact-form {
+	background-color: #1C0920;
 }
 
 .imageZoom {
@@ -26,7 +38,7 @@
 
 }
 
-
+/*--------------------------------------------------------------------------*/
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,

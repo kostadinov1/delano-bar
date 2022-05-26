@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block main-content %}
+
+<section class="contact-form">
+    <br>
+    <h2 id="contact-message">Please fill this form, and We will get back to You shortly.</h2>
+
+    <h3>Contact Form</h3>
+	<form method="post" action="{% url 'contacts' %}">
+		<div class="row gtr-uniform">
+			<div class="col-6 col-12-xsmall">
+                {% csrf_token %}
+                {{ form.name }}
+			</div>
+			<div class="col-6 col-12-xsmall">
+                {{ form.email }}
+			</div>
+			<div class="col-12">
+                {{ form.message }}
+			</div>
+			<div class="col-12">
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+    <br>
+    <br>
+
+</section>
+{% endblock %}

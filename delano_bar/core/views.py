@@ -1,6 +1,9 @@
+from django.core.mail import send_mail
+from django.shortcuts import redirect, render
 from django.utils.timezone import now
 from django.views.generic import TemplateView, ListView
 
+from delano_bar.core.forms import ContactForm
 from delano_bar.core.models import Product, Event, PromoEvent, ProductCategory, PhotoGallery
 
 
@@ -77,6 +80,23 @@ class AlcoholMenuView(ListView):
     context_object_name = 'alcohol'
 
 
-class ContactsView(TemplateView):
-    pass
+def contacts_view(request):
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            name = cleaned_data.get('name')
+            email = cleaned_data.get('email')
+            message = cleaned_data.get('message')
+            send_mail(f'New BlogPost message from {name}', message=message, from_email=email, recipient_list=['somemail@mail.com'])
+            return redirect('home')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'contacts.html', context)
+
+
+
 
