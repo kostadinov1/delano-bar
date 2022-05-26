@@ -15,17 +15,20 @@
                             <header>
                                 <h2><a href="#">Photo Gallery</a></h2>
                             </header>
-                            <a href="{{ cover_image.image_local.url }}" data-lightbox="mygallery" data-title="{{ image.title }}" class="image featured"><img src="{{ cover_image.image_local.url }}" alt=""  width="800" height="600"/></a>
+                            {% if cover_image %}
+                            <a href="{{ cover_image.image_local.url }}" data-lightbox="mygallery" data-title="{{ cover_image.title }}" class="image featured"><img src="{{ cover_image.image_local.url }}" alt=""  width="800" height="600"/></a>
                             <h2>{{ cover_image.title }}</h2>
-                            <br>
-
+                            {% else %}
+                            <a href="{{ latest_image.image_local.url }}" data-lightbox="mygallery" data-title="{{ latest_image.title }}" class="image featured"><img src="{{ latest_image.image_local.url }}" alt=""  width="800" height="600"/></a>
+                            <h2>{{ cover_image.title }}</h2>
+                            {% endif %}
                         </article>
 
 						<hr />
 						<div class="row">
                             {% for image in images %}
 							<article class="col-4 col-12-mobile special">
-                            <a href="{{ image.image_local.url }}" data-lightbox="mygallery" data-title="{{ image.title }}" class="image featured"><img src="{{ image.image_local.url }}" alt="" height="300" /></a>
+                            <a href="{{ image.image_local.url }}" data-lightbox="mygallery" data-title="{{ image.title }}" class="image featured"><img class="imageZoom" src="{{ image.image_local.url }}" alt=""/></a>
 
                             <h2>{{ image.title }}</h2>
                             <br>

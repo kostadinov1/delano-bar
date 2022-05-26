@@ -37,8 +37,13 @@ class PhotoGalleryView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        cover_image = PhotoGallery.objects.all().order_by('-created_on')[0]
-        context['cover_image'] = cover_image
+        cover_image = PhotoGallery.objects.filter(cover_image=True).first()
+        if cover_image:
+            context['cover_image'] = cover_image
+        latest_image = PhotoGallery.objects.all().order_by('-created_on').first
+
+        if latest_image:
+            context['latest_image'] = latest_image
         return context
 
 

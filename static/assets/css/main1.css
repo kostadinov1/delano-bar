@@ -7,6 +7,17 @@
 	font-family: 'Lobster', cursive;
 }
 
+.imageZoom {
+	  transition: transform ease-in-out 0.3s;
+	width: 300px;
+	height: 300px;
+}
+
+.imageZoom:hover {
+	transform: scale(1.1);
+}
+
+
 .event-description {
   display: -webkit-box;
   overflow: hidden;
@@ -1797,7 +1808,11 @@ input, select, textarea {
 		.image img {
 			display: block;
 			width: 100%;
+
+
+
 		}
+
 
 		.image.fit {
 			display: block;

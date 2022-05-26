@@ -66,8 +66,9 @@ class PhotoGallery(models.Model):
 
     title = models.CharField(max_length=TITLE_MAX_LEN, null=False, blank=False,
                              validators=(MinLengthValidator,))
-    image_local = models.ImageField(null=True, blank=True, upload_to='photo_images_gallery')
-    image_url = models.URLField(null=True, blank=True,)
+    cover_image = models.BooleanField(default=False)
+    image_local = models.ImageField(null=False, blank=False, upload_to='photo_images_gallery')
+    # image_url = models.URLField(null=True, blank=True,)
     created_on = models.DateTimeField(auto_now_add=True)
 
 

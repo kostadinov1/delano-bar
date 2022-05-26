@@ -11,6 +11,6 @@ urlpatterns = [
     path('beer-menu', BeerMenuView.as_view(), name='beer menu'),
     path('softdrinks-menu', SoftDrinksMenuView.as_view(), name='soft drinks menu'),
     path('alcohol-menu', AlcoholMenuView.as_view(), name='alcohol menu'),
-    path('promo-events', PhotoGalleryView.as_view(), name='promo events'),
+    path('photo-gallery', PhotoGalleryView.as_view(), name='photo gallery'),
     path('contact', ContactsView.as_view(), name='contacts')
 ]
