@@ -13,6 +13,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         event = Event.objects.filter(date__gte=now()).order_by('date')[0]
+        photos = PhotoGallery.objects.all().order_by('created_on')[:6]
+        context['photos'] = photos
         context['event'] = event
         context['products'] = Product.objects.all()
         return context
