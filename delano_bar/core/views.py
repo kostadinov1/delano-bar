@@ -1,7 +1,7 @@
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.utils.timezone import now
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from delano_bar.core.forms import ContactForm
 from delano_bar.core.models import Product, Event, PromoEvent, ProductCategory, PhotoGallery
@@ -22,13 +22,22 @@ class EventsView(ListView):
     template_name = 'events.html'
     queryset = Event.objects.filter(date__gte=now()).order_by('date')
     context_object_name = 'events'
+    paginate_by = 3
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
         events = Event.objects.all()
         latest_event = events[events.count()-1]
+        past_events = Event.objects.filter(date__lte=now()).order_by('date')
+        context['past_events'] = past_events
         context['latest_event'] = latest_event
         return context
+
+
+class EventDetailsView(DetailView):
+    model = Event
+    template_name = 'event-details.html'
+
 
 
 class PhotoGalleryView(ListView):

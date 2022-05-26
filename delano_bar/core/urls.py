@@ -1,11 +1,12 @@
 from django.urls import path
 
 from delano_bar.core.views import HomeView, EventsView, MenuView, PhotoGalleryView, CocktailMenuView, BeerMenuView, \
-    SoftDrinksMenuView, AlcoholMenuView, contacts_view
+    SoftDrinksMenuView, AlcoholMenuView, contacts_view, EventDetailsView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('events', EventsView.as_view(), name='events'),
+    path('event-details/<int:pk>/', EventDetailsView.as_view(), name='event details'),
     path('menu', MenuView.as_view(), name='menu'),
     path('cocktails-menu', CocktailMenuView.as_view(), name='cocktail menu'),
     path('beer-menu', BeerMenuView.as_view(), name='beer menu'),

@@ -1,25 +1,22 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block main-content %}
-			<!-- Events -->
-				<div class="wrapper style2">
-
-					<article id="main" class="container special">
-						<header>
-							<h2><a href="#">Next Upcoming Event</a></h2>
-						</header>
-						<a href="#" class="image featured"><img src="{{ event.image_url }}" alt="" /></a>
-
-                        <h2>{{ event.title }}</h2>
-                        <br>
-                        <h3>Guest: {{ event.guest }}</h3>
-                        <h3>The Party <b>STARTS</b> on {{ event.date }} at {{ event.time }}</h3>
-                        <br>
-                        <p>{{ event.description }}</p>
-						<footer>
-							<a href="{% url 'events' %}" class="button">More Events</a>
-						</footer>
-					</article>
-
-				</div>
+<!-- Events -->
+<div class="wrapper style2">
+	<article id="main" class="container special">
+		<header>
+			<h2><a href="#">Next Upcoming Event</a></h2>
+		</header>
+		<a href="#" class="image featured"><img src="{{ event.image_url }}" alt="" /></a>
+            <h2>{{ event.title }}</h2>
+            <br>
+            <h3>Guest: {{ event.guest }}</h3>
+            <h3>The Party <b>STARTS</b> on {{ event.date }} at {{ event.time }}</h3>
+            <br>
+            <p>{{ event.description }}</p>
+		<footer>
+			<a href="{% url 'events' %}" class="button">Back to Events</a>
+		</footer>
+	</article>
+</div>
 {% endblock %}
