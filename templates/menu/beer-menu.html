@@ -1,17 +1,41 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% block main-content %}
-				<section class="carousel">
-					<div class="reel">
-                    {% for beer in beers %}
-						<article>
-							<a href="#" class="image featured"><img src="{{ beer.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
-							<header>
-								<h3><a href="#">{{ beer.name }}</a></h3>
-                                <h4>Price: {{ beer.price| floatformat:2 }}lv.</h4>
-							</header>
-							<p>{{ beer.description }}</p>
-						</article>
-                    {% endfor %}
-					</div>
-				</section>
+<!-- Carousel -->
+<div class="wrapper style1">
+    <section id="features" class="container special">
+        <header>
+            <h2>Morbi ullamcorper et varius leo lacus</h2>
+            <p>Ipsum volutpat consectetur orci metus consequat imperdiet duis integer semper magna.</p>
+        </header>
+        <div class="row">
+            {% for beer in beers %}
+            <article class="col-4 col-12-mobile special">
+                <img class="image featured imageZoom" src="{{ beer.image_url }}" alt="No Image" height="400" width="300"/>
+                <header>
+                    <h3>{{ beer.name }}</h3>
+                    <h4>Price: {{ beer.price| floatformat:2 }}lv.</h4>
+                </header>
+                <p>{{ beer.description }}</p>
+            </article>
+        {% endfor %}
+                <!-- PAGINATION -->
+        <ul class="actions pagination">
+            <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="button large next">&laquo; first </a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="button large previous">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="button large next">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="button large next">last &raquo;</a>
+            {% endif %}
+            </span>
+        </ul>
+        </div>
+    </section>
+</div>
 {% endblock %}

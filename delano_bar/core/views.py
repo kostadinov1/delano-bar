@@ -69,26 +69,31 @@ class MenuView(ListView):
 
 class CocktailMenuView(ListView):
     template_name = 'menu/cocktails-menu.html'
-    queryset = Product.objects.filter(category__name='Cocktails')
+    queryset = Product.objects.filter(category__name='Cocktails').order_by('created_on')
     context_object_name = 'cocktails'
+    paginate_by = 6
 
 
 class BeerMenuView(ListView):
     template_name = 'menu/beer-menu.html'
-    queryset = Product.objects.filter(category__name='Beers')
+    queryset = Product.objects.filter(category__name='Beers').order_by('created_on')
     context_object_name = 'beers'
+    paginate_by = 6
+
 
 
 class SoftDrinksMenuView(ListView):
     template_name = 'menu/soft-drinks-menu.html'
-    queryset = Product.objects.filter(category__name='Soft-drinks')
+    queryset = Product.objects.filter(category__name='Soft-drinks').order_by('created_on')
     context_object_name = 'soft_drinks'
+    paginate_by = 6
 
 
 class AlcoholMenuView(ListView):
     template_name = 'menu/alcohol-menu.html'
-    queryset = Product.objects.filter(category__name='Alcohol')
-    context_object_name = 'alcohol'
+    queryset = Product.objects.filter(category__name='Alcohol').order_by('created_on')
+    context_object_name = 'alcohols'
+    paginate_by = 6
 
 
 def contacts_view(request):

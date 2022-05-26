@@ -18,9 +18,9 @@
 
 					<article id="main" class="container special">
 						<header>
-							<h2><a href="javascript:void(0)">Our Next Event</a></h2>
+							<h2>Our Next Event</h2>
 						</header>
-						<a href="javascript:void(0)" class="image featured"><img src="{{ event.image_url }}" alt="" /></a>
+						<img class="image featured" src="{{ event.image_url }}" alt="" />
 
                         <h2>{{ event.title }}</h2>
                         <br>
@@ -39,9 +39,9 @@
 					<div class="reel">
                     {% for product in products %}
 						<article>
-							<a href="javascript:void(0)" class="image featured"><img src="{{ product.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+							<a href="{% url 'cocktail menu' %}" class="image featured"><img src="{{ product.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
 							<header>
-								<h3><a href="#">{{ product.name }}</a></h3>
+								<h3><a href="{% url 'cocktail menu' %}">{{ product.name }}</a></h3>
                                 <h4>Price: {{ product.price| floatformat:2 }}lv.</h4>
 							</header>
 							<p class="reel-description">{{ product.description }}</p>
