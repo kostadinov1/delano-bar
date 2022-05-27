@@ -13,5 +13,6 @@ urlpatterns = [
     path('softdrinks-menu/?order=down', SoftDrinksMenuView.as_view(), name='soft drinks menu'),
     path('alcohol-menu/?order=down', AlcoholMenuView.as_view(), name='alcohol menu'),
     path('photo-gallery/?order=down', PhotoGalleryView.as_view(), name='photo gallery'),
-    path('contact/?order=down', contacts_view, name='contacts')
+    path('contact/?order=down', contacts_view, name='contacts'),
+    path('reservation/?order=reservation', contacts_view, name='make reservation'),
 ]
