@@ -19,6 +19,8 @@ class HomeView(TemplateView):
         context['products'] = Product.objects.all()
         return context
 
+    # TODO PROMO EVENTS IN INDEX
+
 
 class EventsView(ListView):
     template_name = 'events.html'
