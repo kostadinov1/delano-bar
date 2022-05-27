@@ -4,6 +4,9 @@
     <!-- Main Menu -->
 
 <section id="down" class="carousel">
+        <header>
+            <h2>Cocktails</h2>
+        </header>
 	<div class="reel">
                 {% for cocktail in cocktails %}
 		<article>
@@ -20,15 +23,18 @@
 
 </section>
     <section class="carousel">
+            <header>
+            <h2>Beers</h2>
+        </header>
 	<div class="reel">
-                {% for cocktail in cocktails %}
+                {% for beer in beers %}
 		<article>
-			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<a href="#" class="image featured"><img src="{{ beer.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
 			<header>
-				<h3><a href="#">{{ cocktail.name }}</a></h3>
-                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+				<h3><a href="#">{{ beer.name }}</a></h3>
+                <h4>Price: {{ beer.price| floatformat:2 }}lv.</h4>
 			</header>
-			<p>{{ cocktail.description }}</p>
+			<p>{{ beer.description }}</p>
 		</article>
                 {% endfor %}
 	</div>
@@ -38,15 +44,18 @@
 
 
     <section class="carousel">
+            <header>
+            <h2>Soft Drinks</h2>
+        </header>
 	<div class="reel">
-                {% for cocktail in cocktails %}
+                {% for soft_drink in soft_drinks %}
 		<article>
-			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<a href="#" class="image featured"><img src="{{ soft_drink.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
 			<header>
-				<h3><a href="#">{{ cocktail.name }}</a></h3>
-                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+				<h3><a href="#">{{ cocksoft_drinktail.name }}</a></h3>
+                <h4>Price: {{ soft_drink.price| floatformat:2 }}lv.</h4>
 			</header>
-			<p>{{ cocktail.description }}</p>
+			<p>{{ soft_drink.description }}</p>
 		</article>
                 {% endfor %}
 	</div>
@@ -54,20 +63,42 @@
     <!-- Main Menu -->
 
 <section class="carousel">
+        <header>
+            <h2>Hard Alcohol</h2>
+        </header>
 	<div class="reel">
-                {% for cocktail in cocktails %}
+                {% for alcohol in alcohols %}
 		<article>
-			<a href="#" class="image featured"><img src="{{ cocktail.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<a href="#" class="image featured"><img src="{{ alcohol.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
 			<header>
-				<h3><a href="#">{{ cocktail.name }}</a></h3>
-                <h4>Price: {{ cocktail.price| floatformat:2 }}lv.</h4>
+				<h3><a href="#">{{ alcohol.name }}</a></h3>
+                <h4>Price: {{ alcohol.price| floatformat:2 }}lv.</h4>
 			</header>
-			<p>{{ cocktail.description }}</p>
+			<p>{{ alcohol.description }}</p>
 		</article>
                 {% endfor %}
 	</div>
 </section>
 
+        <!-- Main Menu -->
+
+<section class="carousel">
+        <header>
+            <h2>Ice Cream</h2>
+        </header>
+	<div class="reel">
+                {% for ice_cream in ice_creams %}
+		<article>
+			<a href="#" class="image featured"><img src="{{ ice_cream.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<header>
+				<h3><a href="#">{{ ice_cream.name }}</a></h3>
+                <h4>Price: {{ ice_cream.price| floatformat:2 }}lv.</h4>
+			</header>
+			<p>{{ ice_cream.description }}</p>
+		</article>
+                {% endfor %}
+	</div>
+</section>
 <!-- Main Menu -->
 
 <div class="wrapper style1">

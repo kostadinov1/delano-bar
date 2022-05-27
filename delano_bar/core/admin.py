@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from delano_bar.core.models import Product, ProductCategory, Event, PromoEvent, PhotoGallery
+from delano_bar.core.models import Product, ProductCategory, Event, PromoEvent, Photos
 
 
 @admin.register(Product)
@@ -26,9 +26,10 @@ class PromoEventAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(PhotoGallery)
+@admin.register(Photos)
 class PhotoGalleryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'id', 'cover_image', 'created_on')
+
 
 
 

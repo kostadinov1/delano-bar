@@ -61,7 +61,7 @@ class Product(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
 
-class PhotoGallery(models.Model):
+class Photos(models.Model):
     TITLE_MAX_LEN = 30
 
     title = models.CharField(max_length=TITLE_MAX_LEN, null=False, blank=False,

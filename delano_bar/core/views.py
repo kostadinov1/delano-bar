@@ -4,7 +4,13 @@ from django.utils.timezone import now
 from django.views.generic import TemplateView, ListView, DetailView
 
 from delano_bar.core.forms import ContactForm
-from delano_bar.core.models import Product, Event, PromoEvent, ProductCategory, PhotoGallery
+from delano_bar.core.models import Product, Event, PromoEvent, ProductCategory, Photos
+
+
+# TODO PROMO EVENTS IN INDEX ?
+# TODO PRICE FOR MILLILITERS AND FOR A BOTTLE ?
+# TODO LOCAL PHOTOS FOR PRODUCTS ?
+# TODO DISCUS PRODUCT CATEGORIES AND PRODUCT PHOTOS VIEWS(MENUS)?
 
 
 class HomeView(TemplateView):
@@ -13,13 +19,12 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         event = Event.objects.filter(date__gte=now()).order_by('date')[0]
-        photos = PhotoGallery.objects.all().order_by('created_on')[:6]
+        photos = Photos.objects.all().order_by('created_on')[:6]
         context['photos'] = photos
         context['event'] = event
         context['products'] = Product.objects.all()
         return context
 
-    # TODO PROMO EVENTS IN INDEX
 
 
 class EventsView(ListView):
@@ -43,20 +48,19 @@ class EventDetailsView(DetailView):
     template_name = 'event-details.html'
 
 
-
 class PhotoGalleryView(ListView):
     template_name = 'photo-galley.html'
     paginate_by = 6
-    model = PhotoGallery
+    model = Photos
     ordering = '-created_on'
     context_object_name = 'images'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        cover_image = PhotoGallery.objects.filter(cover_image=True).first()
+        cover_image = Photos.objects.filter(cover_image=True).first()
         if cover_image:
             context['cover_image'] = cover_image
-        latest_image = PhotoGallery.objects.all().order_by('-created_on').first
+        latest_image = Photos.objects.all().order_by('-created_on').first
 
         if latest_image:
             context['latest_image'] = latest_image
@@ -68,6 +72,21 @@ class MenuView(ListView):
     queryset = Product.objects.all()
     context_object_name = 'products'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(MenuView, self).get_context_data()
+        cocktails = Product.objects.filter(category__name='Cocktails').order_by('created_on')
+        beers = Product.objects.filter(category__name='Soft-drinks').order_by('created_on')
+        soft_drinks = Product.objects.filter(category__name='Beers').order_by('created_on')
+        alcohols = Product.objects.filter(category__name='Alcohol').order_by('created_on')
+        ice_creams = Product.objects.filter(category__name='Ice-cream').order_by('created_on')
+
+        context['cocktails'] = cocktails
+        context['beers'] = beers
+        context['soft_drinks'] = soft_drinks
+        context['alcohols'] = alcohols
+        context['ice_creams'] = ice_creams
+
+        return context
 
 class CocktailMenuView(ListView):
     template_name = 'menu/cocktails-menu.html'
