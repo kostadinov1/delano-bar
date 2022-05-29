@@ -18,7 +18,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        event = Event.objects.filter(date__gte=now()).order_by('date')[0]
+        event = Event.objects.filter(date__gte=now()).order_by('date').first
         photos = Photos.objects.all().order_by('created_on')[:6]
         context['photos'] = photos
         context['event'] = event
@@ -36,10 +36,12 @@ class EventsView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
         events = Event.objects.all()
-        latest_event = events[events.count()-1]
+        if events:
+            latest_event = events[events.count()-1]
+            context['latest_event'] = latest_event
+
         past_events = Event.objects.filter(date__lte=now()).order_by('date')
         context['past_events'] = past_events
-        context['latest_event'] = latest_event
         return context
 
 
@@ -126,7 +128,7 @@ def contacts_view(request):
             name = cleaned_data.get('name')
             email = cleaned_data.get('email')
             message = cleaned_data.get('message')
-            send_mail(f'New BlogPost message from {name}', message=message, from_email=email, recipient_list=['somemail@mail.com'])
+            send_mail(f'New Reservation message from {name}, f{email}', message, email, ['example@gmail.com'])
             return redirect('home')
 
     context = {

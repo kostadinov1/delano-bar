@@ -1,71 +1,72 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block main-content %}
-			<!-- Banner -->
-				<section id="banner">
-					<header>
-						<h2>Hello And Welcome to <strong>Delano Beach Bar</strong>.</h2>
-						<p>
-                            Come and join Us on some of Our Events!
-						</p>
-					</header>
-				</section>
-
-
-
-			<!-- Events -->
-				<div class="wrapper style2">
-
-					<article id="main" class="container special">
-						<header>
-							<h2>Our Next Event</h2>
-						</header>
-						<img class="image featured" src="{{ event.image_url }}" alt="" />
-
-                        <h2>{{ event.title }}</h2>
-                        <br>
-                        <h3>Guest: {{ event.guest }}</h3>
-                        <h3>The Party <b>STARTS</b> on {{ event.date }} at {{ event.time }}</h3>
-                        <br>
-                        <p>{{ event.description }}</p>
-						<footer>
-							<a href="{% url 'events' %}" class="button">More Events</a>
-						</footer>
-					</article>
-
-				</div>
-			<!-- Carousel -->
-				<section class="carousel">
-					<div class="reel">
-                    {% for product in products %}
-						<article>
-							<a href="{% url 'cocktail menu' %}" class="image featured"><img src="{{ product.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
-							<header>
-								<h3><a href="{% url 'cocktail menu' %}">{{ product.name }}</a></h3>
-                                <h4>Price: {{ product.price| floatformat:2 }}lv.</h4>
-							</header>
-							<p class="reel-description">{{ product.description }}</p>
-						</article>
-                    {% endfor %}
-					</div>
-				</section>
-			<!-- Features -->
-				<div class="wrapper style1">
-
-					<section id="features" class="container special">
-						<header>
-                            <a href="{% url 'photo gallery' %}"><h2>Check out the Gallery</h2></a>
-							<p>Ipsum volutpat consectetur orci metus consequat imperdiet duis integer semper magna.</p>
-						</header>
-						<div class="row">
-                            {% for photo in photos %}
-							<article class="col-4 col-12-mobile special">
-								<a href="javascript:void(0)" class="image featured"><img src="{{ photo.image_local.url }}" height="300" width="300" alt="" /></a>
-							</article>
-                            {% endfor %}
-
-						</div>
-					</section>
-
-				</div>
+<!-- Banner -->
+<section id="banner">
+	<header>
+		<h2>Hello And Welcome to <strong>Delano Beach Bar</strong>.</h2>
+		<p>Come and join Us on some of Our Events!</p>
+	</header>
+</section>
+<!-- Events -->
+<div class="wrapper style2">
+	<article id="main" class="container special">
+		<header>
+			<h2>Our Next Event</h2>
+		</header>
+            {% if event %}
+            <img class="image featured" src="{{ event.image_url }}" alt="" />
+            <h2>{{ event.title }}</h2>
+            <br>
+            <h3>Guest: {{ event.guest }}</h3>
+            <h3>The Party <b>STARTS</b> on {{ event.date }} at {{ event.time }}</h3>
+            <br>
+            <p>{{ event.description }}</p>
+            {% else %}
+                <h2>No Events Yet</h2>
+            {% endif %}
+		<footer>
+			<a href="{% url 'events' %}" class="button">More Events</a>
+		</footer>
+	</article>
+</div>
+<!-- Carousel -->
+<section class="carousel">
+	<div class="reel">
+        {% if products %}
+        {% for product in products %}
+		<article>
+			<a href="{% url 'cocktail menu' %}" class="image featured"><img src="{{ product.image_url }}" alt="NO IMAGE" width="auto" height="400" /></a>
+			<header>
+				<h3><a href="{% url 'cocktail menu' %}">{{ product.name }}</a></h3>
+                            <h4>Price: {{ product.price| floatformat:2 }}lv.</h4>
+			</header>
+			<p class="reel-description">{{ product.description }}</p>
+		</article>
+        {% endfor %}
+        {% else %}
+            <h2>No Products Yet</h2>
+        {% endif %}
+	</div>
+</section>
+<!-- Features -->
+<div class="wrapper style1">
+	<section id="features" class="container special">
+		<header>
+        <a href="{% url 'photo gallery' %}"><h2>Check out the Gallery</h2></a>
+		<p>Ipsum volutpat consectetur orci metus consequat imperdiet duis integer semper magna.</p>
+		</header>
+		<div class="row">
+            {% if photos %}
+            {% for photo in photos %}
+			<article class="col-4 col-12-mobile special">
+				<a href="javascript:void(0)" class="image featured"><img src="{{ photo.image_local.url }}" height="300" width="300" alt="" /></a>
+			</article>
+            {% endfor %}
+            {% else %}
+                <h2>No Photos Yet</h2>
+            {% endif %}
+		</div>
+	</section>
+</div>
 {% endblock %}
