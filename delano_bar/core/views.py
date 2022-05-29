@@ -104,7 +104,6 @@ class BeerMenuView(ListView):
     paginate_by = 6
 
 
-
 class SoftDrinksMenuView(ListView):
     template_name = 'menu/soft-drinks-menu.html'
     queryset = Product.objects.filter(category__name='Soft-drinks').order_by('created_on')

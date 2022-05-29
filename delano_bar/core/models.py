@@ -17,7 +17,6 @@ class Event(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
 
-
 class PromoEvent(models.Model):
     NAME_MAX_LEN = 50
 
@@ -31,7 +30,6 @@ class PromoEvent(models.Model):
     end_time = models.TimeField(null=False, blank=False)
     image_url = models.URLField()
     created_on = models.DateTimeField(auto_now_add=True)
-
 
 
 class ProductCategory(models.Model):
@@ -53,7 +51,10 @@ class Product(models.Model):
 
     name = models.CharField(max_length=NAME_MAX_LEN, blank=True, null=False,
                             validators=(MinLengthValidator,))
-    price = models.IntegerField(null=False, blank=False,)
+    price = models.PositiveIntegerField(null=False, blank=False,)
+    amount = models.PositiveIntegerField(null=True, blank=True)
+    price_per_serving = models.PositiveIntegerField(null=True, blank=True,)
+    serving_amount = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(null=False, blank=False,
                                    validators=(MinLengthValidator,))
     image_url = models.URLField()
